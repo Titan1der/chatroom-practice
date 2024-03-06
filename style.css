@@ -1,0 +1,52 @@
+html, body {
+    /* Height and width fallback for older browsers. */
+    height: 100%;
+    width: 100%;
+
+    /* Set the height to match that of the viewport. */
+    height: 100vh;
+
+    /* Set the width to match that of the viewport. */
+    width: 100vw;
+
+    /* Remove any browser-default margins. */
+    margin: 0;
+}
+
+#container-page,
+#container-chat-area,
+#container-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px
+}
+
+#chatbox {
+    width: 100%;
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 25px;
+    margin: 10px 0;
+}
+
+#input-txt {
+    width: 400px;
+}
+
+
+#container-links {
+    flex-direction: row;
+}
+
+.room-link {
+    padding: 0 10px
+}
+
+#joinLink, #watchLink {
+    visibility: hidden;
+}
+
+
+
