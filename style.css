@@ -29,6 +29,7 @@ html, body {
     border: 2px solid black;
     border-radius: 25px;
     margin: 10px 0;
+    padding: 15px
 }
 
 #input-txt {
@@ -45,6 +46,7 @@ html, body {
 }
 
 #joinLink, #watchLink {
+    display: none;
     visibility: hidden;
 }
 
