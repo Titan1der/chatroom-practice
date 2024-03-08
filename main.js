@@ -127,7 +127,7 @@ function sendMessage(websocket) {
 
 
 function getWebSocketServer() {
-    if (window.location.host === "Titan1der.github.io") {
+    if (window.location.host === "titan1der.github.io") {
         return "wss://websocket-chatroom-test-0081e647aa7f.herokuapp.com/";
     }
     else if (window.location.host === "localhost:5500") {
