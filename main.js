@@ -140,7 +140,7 @@ function getWebSocketServer() {
 
 
 window.addEventListener("DOMContentLoaded", () => {
-    const websocket = getWebSocketServer()
+    const websocket = new WebSocket(getWebSocketServer())
 
     initApp(websocket)
     receiveMessage(websocket)
