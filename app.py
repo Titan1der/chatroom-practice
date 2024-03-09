@@ -2,10 +2,10 @@ import websockets
 import asyncio
 import os
 import signal
-import logging
 
 from constants import *
 
+import logging
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -37,7 +37,7 @@ async def main():
     port = int(os.environ.get("PORT", "8001"))
     
     async with websockets.serve(handler, "", port):
-        print("Listening on websocket port:8001")
+        logging.info("Listening on websocket port:8001")
         await stop
 
 

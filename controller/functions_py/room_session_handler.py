@@ -6,6 +6,12 @@ from controller.functions_py.chat_service_handler import chat_service
 import secrets
 import json
 
+import logging
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+    )
 
 JOIN = {}
 WATCH = {}
@@ -28,7 +34,7 @@ async def hostRoom(websocket : WebSocketServerProtocol):
             "watch" : watch_key
             }
         
-        print("Now hosting")
+        logging.info(f"Now hosting: join:{join_key} - watch{watch_key}")
         await websocket.send(json.dumps(event))
         await chat_service(websocket, room, connected)
     
@@ -50,10 +56,10 @@ async def joinRoom(websocket : WebSocketServerProtocol, join_key):
             }
         
         await websocket.send(json.dumps(event))
-        print(f"Joined room - {join_key}")
+        logging.info(f"Joined room - {join_key}")
         
     except KeyError:
-        print(f"Room not found")
+        logging.info(f"Room not found")
         return
     
         
@@ -83,4 +89,4 @@ async def handler(websocket : WebSocketServerProtocol):
             await joinRoom(websocket, event["key"])
             
         case _:
-            print("Server initialization error.")
+            logging.info("Server initialization error.")
