@@ -11,7 +11,7 @@ async def main():
     loop = asyncio.get_running_loop()
     stop = loop.create_future()
     # Uncomment before commit
-    # loop.add_signal_handler(signal.SIGTERM, stop.set_result, None)
+    loop.add_signal_handler(signal.SIGTERM, stop.set_result, None)
     
 
     port = int(os.environ.get("PORT", "8001"))
