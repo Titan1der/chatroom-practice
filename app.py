@@ -3,7 +3,7 @@ import asyncio
 import os
 import signal
 
-from constants import *
+from controller.functions_py.constants import *
 
 import logging
 # Configure logging

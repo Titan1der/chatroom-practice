@@ -36,7 +36,7 @@ async def host_room(env : ServerEnv, websocket : WebSocketServerProtocol):
             "watch" : watch_key
             }
         
-        logging.info(f"Now hosting: join:{join_key} - watch{watch_key}")
+        logging.info(f"Now hosting: join: {join_key} -- watch: {watch_key}")
         await websocket.send(json.dumps(event))
         await update_rooms(env, websocket)
         await chat_service(websocket, room, connected)
