@@ -1,7 +1,9 @@
 from websockets import WebSocketServerProtocol
 from models.chatroom import Chatroom
+from models.environment_variables import ServerEnv
 
 from controller.functions_py.chat_service_handler import chat_service
+
 
 import secrets
 import json
@@ -17,7 +19,7 @@ JOIN = {}
 WATCH = {}
 
 
-async def hostRoom(websocket : WebSocketServerProtocol):
+async def host_room(env : ServerEnv, websocket : WebSocketServerProtocol):
     room = Chatroom()
     connected = {websocket}
     
@@ -36,13 +38,14 @@ async def hostRoom(websocket : WebSocketServerProtocol):
         
         logging.info(f"Now hosting: join:{join_key} - watch{watch_key}")
         await websocket.send(json.dumps(event))
+        await update_rooms(env, websocket)
         await chat_service(websocket, room, connected)
     
     finally:
         del JOIN[join_key]
         del WATCH[watch_key]
 
-async def joinRoom(websocket : WebSocketServerProtocol, join_key):
+async def join_room(env : ServerEnv, websocket : WebSocketServerProtocol, join_key):
     #if join_key not in JOIN:
     if join_key not in JOIN:
         raise AssertionError()
@@ -76,17 +79,45 @@ async def joinRoom(websocket : WebSocketServerProtocol, join_key):
         connected.remove(websocket) 
 
 
+
+async def update_rooms(env : ServerEnv, websocket : WebSocketServerProtocol):
+    rooms = env.get_rooms_list()
+    try:
+        event = {
+            "type" : "rooms",
+            "roomList" : rooms,
+        }
+        await websocket.send(json.dumps(event))
+    finally:
+        logging.info("Server: sent rooms list to client")
+
+
 async def handler(websocket : WebSocketServerProtocol):
     message = await websocket.recv()
     event = json.loads(message)
     assert event["type"] == "init"
     
+    logging.info(f"Received client event: {event}")
+    
+    # Get server environemnt global variables
+    env = ServerEnv()
     match event["action"]:
         case "host": 
-            await hostRoom(websocket)
+            await host_room(env, websocket)
             
         case "join": 
-            await joinRoom(websocket, event["key"])
+            await join_room(env, websocket, event["key"])
             
+        case "none":
+            pass
+            # await update_rooms(env, websocket)
+                
         case _:
-            logging.info("Server initialization error.")
+            try:
+                event = {
+                    "type" : "error",
+                    "message" : "unknown_request"
+                    }
+                await websocket.send(json.dumps(event))
+            finally:
+                logging.info("Server initialization error.")

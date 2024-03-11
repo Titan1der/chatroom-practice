@@ -1,6 +1,7 @@
 import { hostRoom } from "./hostRoom.js";
 import { joinRoom } from "./joinRoom.js";
 import { updateChatLog } from "./updateChatLog.js";
+import { updateRoomsList } from "./updateRoomsList.js";
 
 export function receiveMessage(websocket) {
     websocket.addEventListener("message", ({data}) => {
@@ -20,6 +21,11 @@ export function receiveMessage(websocket) {
             case "chat":
                 console.log("Updating chat logs");
                 updateChatLog(event.chatlog)
+                break;
+
+            case "rooms":
+                console.log("Updating rooms list");
+                updateRoomsList(event.roomList)
                 break;
 
             default:

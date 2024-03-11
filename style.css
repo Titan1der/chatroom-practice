@@ -67,6 +67,10 @@ li.empty-rooms {
     background-color: gray;
 }
 
+li.open-room {
+    background-color: green;
+}
+
 #input-area {
     border: 1px solid purple;
     height: 18vh;

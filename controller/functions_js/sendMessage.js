@@ -13,9 +13,9 @@ function sendMessageHandler(websocket) {
 
 export function sendMessage(websocket) {
     const sendButton = document.querySelector("#send-btn")
-    const inputText = document.querySelector("#input-txt")
+    const inputText = document.querySelector("#input-text")
 
-    sendButton.addEventListener("click", () => { sendMessageHandler(websocket) });
+    // sendButton.addEventListener("click", () => { sendMessageHandler(websocket) });
     inputText.addEventListener("keydown", (e) => {
         if (e.key === "Enter") { sendMessageHandler(websocket) }
     });
