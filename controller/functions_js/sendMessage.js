@@ -1,12 +1,12 @@
 function sendMessageHandler(websocket) {
-    const inputText = document.querySelector("#input-txt").value
+    const inputText = document.querySelector("#input-text").value
 
         const event = { 
             type : "chat",
             text :  inputText
         }
 
-        document.querySelector("#input-txt").value = ""
+        document.querySelector("#input-text").value = ""
         websocket.send(JSON.stringify(event))
 }
 
@@ -17,6 +17,6 @@ export function sendMessage(websocket) {
 
     // sendButton.addEventListener("click", () => { sendMessageHandler(websocket) });
     inputText.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") { sendMessageHandler(websocket) }
+        if (e.key === "Enter" && !e.shiftKey) { sendMessageHandler(websocket) }
     });
 }
