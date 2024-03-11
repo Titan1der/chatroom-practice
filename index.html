@@ -8,29 +8,54 @@
 </head>
 <body>
     <div id="container-page">
+        <div id="container-room-area">
+            <nav>
+                <ul id="list-rooms">
+                    <li class="empty-rooms">No Rooms Available</li>
+                    <!-- <li class="room">Room #1</li>
+                    <li class="room">Room #2</li>
+                    <li class="room">Room #3</li>
+                    <li class="room">Room #4</li>
+                    <li class="room">Room #5</li>
+                    <li class="room">Room #6</li>
+                    <li class="room">Room #7</li>
+                    <li class="room">Room #8</li>
+                    <li class="room">Room #9</li>
+                    <li class="room">Room #10</li> -->
+                </ul>
+            </nav>
+        </div>
         <div id="container-chat-area">
-            <div id="chatbox"></div>
+            <div id="chatbox">
+                <nav>
+                    <ul id="list-messages">
+                        <!-- <li class="message">TEST - MESSAGE MESSAGE MESSAGE MESSAGE 1</li>
+                        <li class="message">TEST - MESSAGE MESSAGE MESSAGE MESSAGE 2</li>
+                        <li class="message">TEST - MESSAGE MESSAGE MESSAGE MESSAGE 3</li>
+                        <li class="message">TEST - MESSAGE MESSAGE MESSAGE MESSAGE 4</li>
+                        <li class="message">TEST - MESSAGE MESSAGE MESSAGE MESSAGE 5</li>
+                        <li class="message">TEST - MESSAGE MESSAGE MESSAGE MESSAGE 6</li>
+                        <li class="message">TEST - MESSAGE MESSAGE MESSAGE MESSAGE 7</li>
+                        <li class="message">TEST - MESSAGE MESSAGE MESSAGE MESSAGE 8</li>
+                        <li class="message">TEST - MESSAGE MESSAGE MESSAGE MESSAGE 9</li>
+                        <li class="message">TEST - MESSAGE MESSAGE MESSAGE MESSAGE 10</li> -->
+                    </ul>
+                </nav>
+            </div>
             <div id="input-area">
-                <input id="input-txt" type="text">
-                <button id="send-btn">Send</button>
+                <textarea id="input-txt" type="text" placeholder="Write your message here..."></textarea>
+                <!-- <button id="send-btn">Send</button> -->
             </div>
         </div>
-        <div id="container-links">
+        <!-- <div id="container-links">
             <a id="joinLink" class="room-link" href="" target="_blank">JOIN</a>
             <a id="watchLink" class="room-link" href="" target="_blank">WATCH</a>
             <div id="websocketState">Unable to connect to websocket</div>
-        </div>
+        </div> -->
     </div>
     <div>
         
     </div>
-    <!-- <script type="module" src="./controller/functions_js/sendMessage.js"></script>
-    <script type="module" src="./controller/functions_js/receiveMessage.js"></script>
-    <script type="module" src="./controller/functions_js/hostRoom.js"></script>
-    <script type="module" src="./controller/functions_js/sendMessage.js"></script>
-    <script type="module" src="./controller/functions_js/joinRoom.js"></script>
-    <script type="module" src="./controller/functions_js/updateChatLog.js"></script> -->
-    <script type="module" src="./controller/functions_js/getWebSocketServer.js"></script>
     <script type="module" src="./main.js"></script>
 </body>
 </html>
