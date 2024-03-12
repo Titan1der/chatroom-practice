@@ -1,8 +1,9 @@
 export function updateChatLog(chatLog) {
-    let res = ""
-    chatLog.forEach(line => {
-        res += line + "<br>"
-    });
+    // Update the chatbox with latest message
+    const ulistMessages = document.querySelector("#list-messages")
+    const lastMsg = chatLog[chatLog.length - 1];
+    ulistMessages.innerHTML += `<li class='chat-message'>${lastMsg}</li>`
 
-    document.querySelector("#chatbox").innerHTML = res
+    // Keep the scrollbar scrolled down\
+    ulistMessages.lastChild.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
 }

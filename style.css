@@ -36,15 +36,17 @@ ul#list-rooms {
     flex-direction: column;
     border: 1px solid forestgreen;
     overflow-y: auto;
+    scrollbar-width: none;
     height: calc(100vh - 13px);
 }
 
 
-ul#list-messages{
+ul#list-messages {
     display: flex;
     flex-direction: column;
     border: 1px solid forestgreen;
     overflow-y: auto;
+    scrollbar-width: none;
     height: calc(82vh - 25px);
     width: calc(85vw);
 }
@@ -69,6 +71,10 @@ li.empty-rooms {
 
 li.open-room {
     background-color: green;
+}
+
+li.chat-message {
+    background-color: lightsteelblue;
 }
 
 #input-area {
