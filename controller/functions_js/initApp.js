@@ -19,17 +19,14 @@ function initStartup(websocket) {
         }
 
         else {
-            event.action = "host"
+            event.action = "lobby"
         }
 
         websocket.send(JSON.stringify(event))
 }
 
-export function initApp(websocket) {
-    websocket.addEventListener("open", () => {
-        initStartup(websocket)
-    });
 
+function initWebsocketListeners(websocket) {
     // Websocket closed cases
     websocket.addEventListener("closed", () => {
         document.querySelector("#input-text").placeholder = "Closed: Could not connect to websocket."
@@ -42,4 +39,43 @@ export function initApp(websocket) {
     if (websocket.readyState === WebSocket.CLOSED) {
         document.querySelector("#input-text").placeholder = "Websocket closed."
     }
+}
+
+
+function initButtonListeners(websocket) {
+    const hostBtn = document.querySelector("#host-room-button");
+    const joinBtn = document.querySelector("#join-room-button");
+    let joinKey = document.querySelector("#join-room-key");
+
+    hostBtn.addEventListener("click", () => {
+        const event = {
+            type : "runtime",
+            request : "host",
+            room_name : "placeholder_room_name"
+        }
+
+        console.log(event)
+        websocket.send(JSON.stringify(event))
+    });
+
+    joinBtn.addEventListener("click", () => {
+        const event = {
+            type : "runtime",
+            request : "join",
+            join_key : joinKey.value
+        }
+
+        console.log(event)
+        websocket.send(JSON.stringify(event))
+    });
+}
+
+
+export function initApp(websocket) {
+    websocket.addEventListener("open", () => {
+        initStartup(websocket)
+    });
+
+    initWebsocketListeners(websocket)
+    initButtonListeners(websocket)
 }

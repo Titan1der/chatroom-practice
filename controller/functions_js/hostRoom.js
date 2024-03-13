@@ -1,5 +1,5 @@
-export function hostRoom(joinKey, watchKey) {
-    // document.querySelector("#websocketState").style.display = "none"
+export function hostRoom(joinKey) {
+    document.querySelector("#join-key").innerHTML = joinKey
     // document.querySelector("#websocketState").style.visibility = "hidden"
     // document.querySelector("#joinLink").href = "?join=" + joinKey
     // document.querySelector("#joinLink").style.display = "block"

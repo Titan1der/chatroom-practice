@@ -9,8 +9,8 @@ export function receiveMessage(websocket) {
 
         switch(event.type) {
             case "host":
-                console.log("Creating JOIN and WATCH keys");
-                hostRoom(event.join, event.watch)
+                console.log("Creating ROOM key");
+                hostRoom(event.join)
                 break;
 
             case "join":
