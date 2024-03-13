@@ -19,7 +19,7 @@ function initStartup(websocket) {
         }
 
         else {
-            event.action = "host"
+            event.action = "lobby"
         }
 
         websocket.send(JSON.stringify(event))
