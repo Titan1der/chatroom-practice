@@ -49,8 +49,9 @@ function initButtonListeners(websocket) {
 
     hostBtn.addEventListener("click", () => {
         const event = {
-            type : "host",
-            name : "placeholder_room_name"
+            type : "runtime",
+            request : "host",
+            room_name : "placeholder_room_name"
         }
 
         console.log(event)
@@ -59,8 +60,9 @@ function initButtonListeners(websocket) {
 
     joinBtn.addEventListener("click", () => {
         const event = {
-            type : "join",
-            key : joinKey.value
+            type : "runtime",
+            request : "join",
+            join_key : joinKey.value
         }
 
         console.log(event)

@@ -3,6 +3,7 @@ function sendMessageHandler(websocket) {
 
         const event = { 
             type : "chat",
+            request : "sendMessage",
             text :  inputText
         }
 
