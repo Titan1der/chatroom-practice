@@ -30,14 +30,20 @@ function initWebsocketListeners(websocket) {
     // Websocket closed cases
     websocket.addEventListener("closed", () => {
         document.querySelector("#input-text").placeholder = "Closed: Could not connect to websocket."
+        document.querySelector("#input-text").readOnly = true
+        document.querySelector("#input-text").style.background = "gray"
     });
 
     websocket.addEventListener("error", () => {
         document.querySelector("#input-text").placeholder = "Error: Could not connect to websocket."
+        document.querySelector("#input-text").readOnly = true
+        document.querySelector("#input-text").style.background = "gray"
     });
 
     if (websocket.readyState === WebSocket.CLOSED) {
         document.querySelector("#input-text").placeholder = "Websocket closed."
+        document.querySelector("#input-text").readOnly = true
+        document.querySelector("#input-text").style.background = "gray"
     }
 }
 

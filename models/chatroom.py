@@ -45,6 +45,25 @@ class Chatroom(object):
     async def handle_join_chatroom_request(self, websocket):
         self._connected_clients.add(websocket)
         logging.info(f"Number of clients in {self.name}: {self.connected_clients}")
+        
+        self._chatLog.append(f"Guest has joined the room: {self.name}")
+        event = {
+            "type" : "chat",
+            "chatlog" : self.chatlog
+            }
+            
+        websockets.broadcast(self._connected_clients, json.dumps(event))
+                        
+                        
+         # Start the chat service for the room
+        event = {
+            "type" : "join",
+            "join" : "guest"
+        }
+        
+        # Show connected client the room key
+        websockets.broadcast(self._connected_clients, json.dumps(event))
+        
         # Start the chat service for the room
         await self.start_chat_service(websocket)
         

@@ -75,7 +75,7 @@ ul#list-messages {
     overflow-y: auto;
     scrollbar-width: none;
     height: calc(82vh - 25px);
-    width: calc(85vw);
+    width: calc(80vw);
 }
 
 
@@ -115,7 +115,7 @@ textarea {
     border-radius: 10px;
     padding: 5px 10px;
     height: calc(17vh - 2px);
-    width: calc(84vw - 3px);
+    width: calc(80vw - 3px);
     font-size: 16px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

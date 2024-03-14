@@ -1,5 +1,7 @@
 export function hostRoom(joinKey) {
     document.querySelector("#join-key").innerHTML = joinKey
+    document.querySelector("#input-text").readOnly = false
+    document.querySelector("#input-text").style.background = "#FFFFFF"
     // document.querySelector("#websocketState").style.visibility = "hidden"
     // document.querySelector("#joinLink").href = "?join=" + joinKey
     // document.querySelector("#joinLink").style.display = "block"
